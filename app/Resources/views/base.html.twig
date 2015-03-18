@@ -1,26 +1,54 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}eventNow{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 
-        <link href="{{ path('_assetic_bootstrap_css') }}" type="text/css" rel="stylesheet"/>
+    <link href="{{ path('_assetic_bootstrap_css') }}" type="text/css" rel="stylesheet"/>
 
-        {% stylesheets '../app/Resources/public/css/*.css' %}
-        <link href="{{ asset_url }}" type="text/css" rel="stylesheet"/>
-        {% endstylesheets %}
+    {% stylesheets '../app/Resources/public/css/*.css' %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet"/>
+    {% endstylesheets %}
 
-        <script src="{{ path('_assetic_bootstrap_js') }}"></script>
-        {% javascripts '../app/Resources/public/js/*.js' %}
-        <script src="{{ asset_url }}"></script>
-        {% endjavascripts %}
+    <script src="{{ path('_assetic_bootstrap_js') }}"></script>
+    {% javascripts '../app/Resources/public/js/*.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 
 
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle"
+                data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{ path('home') }}">eventNow</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="{{ path('event_create') }}">create Event</a></li>
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>
+<div class="container content-container">
+    {% include 'BraincraftedBootstrapBundle::flash.html.twig' %}
+    {% block body %}{% endblock %}
+</div>
+
+{% block javascripts %}
+
+{% endblock %}
+<script src="{{ asset('js/jquery.js') }}"></script>
+</body>
 </html>

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Your Event: {{ event.name }}</h1>
+            <h4>Date: {{ event.date|date("d.m.Y") }}</h4>
+            <h4>{{ app.request.getSchemeAndHttpHost() }}{{ app.request.requesturi }}</h4>
+        </div>
+    </div>
+{% endblock %}
