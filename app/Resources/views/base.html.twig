@@ -5,6 +5,19 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <link href="{{ path('_assetic_bootstrap_css') }}" type="text/css" rel="stylesheet"/>
+
+        {% stylesheets '../app/Resources/public/css/*.css' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet"/>
+        {% endstylesheets %}
+
+        <script src="{{ path('_assetic_bootstrap_js') }}"></script>
+        {% javascripts '../app/Resources/public/js/*.js' %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+
     </head>
     <body>
         {% block body %}{% endblock %}
