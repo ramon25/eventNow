@@ -58,6 +58,11 @@ class Event
     protected $password;
 
     /**
+     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="event")
+     */
+    private $tickets;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -190,5 +195,45 @@ class Event
     public function getPassword()
     {
         return $this->password;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add tickets
+     *
+     * @param \AppBundle\Entity\Ticket $tickets
+     * @return Event
+     */
+    public function addTicket(\AppBundle\Entity\Ticket $tickets)
+    {
+        $this->tickets[] = $tickets;
+
+        return $this;
+    }
+
+    /**
+     * Remove tickets
+     *
+     * @param \AppBundle\Entity\Ticket $tickets
+     */
+    public function removeTicket(\AppBundle\Entity\Ticket $tickets)
+    {
+        $this->tickets->removeElement($tickets);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
     }
 }

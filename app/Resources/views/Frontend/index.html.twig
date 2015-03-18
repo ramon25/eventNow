@@ -1,5 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block jumbotron %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>eventNow</h1>
+            <p>Create your event, generate some tickets...</p>
+            <p><a class="btn btn-primary btn-lg" href="{{ path('event_create') }}" role="button">Start by creating an event!</a></p>
+        </div>
+
+    </div>
+
+{% endblock %}
+
 {% block body %}
-    Homepage.
+
 {% endblock %}

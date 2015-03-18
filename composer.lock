@@ -4,21 +4,21 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9b272abfbbee0ffb1381a07103851a6f",
+    "hash": "3fa9ce5d783361db56f557d7deee6220",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
-            "version": "v2.1.2",
+            "version": "dev-master",
             "target-dir": "Braincrafted/Bundle/BootstrapBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/braincrafted/bootstrap-bundle.git",
-                "reference": "c301bae8ba91b1a6f1045919b16f9cb9b62c7e7b"
+                "reference": "121961d7b31f4de7a7100e0c84e283c249246885"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/braincrafted/bootstrap-bundle/zipball/c301bae8ba91b1a6f1045919b16f9cb9b62c7e7b",
-                "reference": "c301bae8ba91b1a6f1045919b16f9cb9b62c7e7b",
+                "url": "https://api.github.com/repos/braincrafted/bootstrap-bundle/zipball/121961d7b31f4de7a7100e0c84e283c249246885",
+                "reference": "121961d7b31f4de7a7100e0c84e283c249246885",
                 "shasum": ""
             },
             "require": {
@@ -64,7 +64,7 @@
             "keywords": [
                 "bootstrap"
             ],
-            "time": "2015-03-06 12:14:13"
+            "time": "2015-03-06 12:28:53"
         },
         {
             "name": "doctrine/annotations",
@@ -767,6 +767,121 @@
                 "orm"
             ],
             "time": "2014-12-16 13:45:01"
+        },
+        {
+            "name": "endroid/qrcode",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/endroid/QrCode.git",
+                "reference": "d178018a109f46a7caf86ce76c8de6902cb57a82"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/endroid/QrCode/zipball/d178018a109f46a7caf86ce76c8de6902cb57a82",
+                "reference": "d178018a109f46a7caf86ce76c8de6902cb57a82",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Endroid": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeroen van den Enden",
+                    "email": "info@endroid.nl",
+                    "homepage": "http://endroid.nl/"
+                }
+            ],
+            "description": "Endroid QR Code",
+            "homepage": "https://github.com/endroid/QrCode",
+            "keywords": [
+                "code",
+                "endroid",
+                "qr",
+                "qrcode"
+            ],
+            "time": "2015-01-25 22:41:34"
+        },
+        {
+            "name": "endroid/qrcode-bundle",
+            "version": "1.5.0",
+            "target-dir": "Endroid/Bundle/QrCodeBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/endroid/EndroidQrCodeBundle.git",
+                "reference": "450777d82b6d50d9de8a1d97da4f01d862c500bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/endroid/EndroidQrCodeBundle/zipball/450777d82b6d50d9de8a1d97da4f01d862c500bc",
+                "reference": "450777d82b6d50d9de8a1d97da4f01d862c500bc",
+                "shasum": ""
+            },
+            "require": {
+                "endroid/qrcode": "~1.3",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "sensio/framework-extra-bundle": "~3.0",
+                "symfony/browser-kit": "~2.1",
+                "symfony/class-loader": "~2.1",
+                "symfony/expression-language": "~2.1",
+                "symfony/finder": "~2.1",
+                "symfony/form": "~2.1",
+                "symfony/framework-bundle": "~2.1",
+                "symfony/http-kernel": "~2.1",
+                "symfony/validator": "~2.1",
+                "symfony/yaml": "~2.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Endroid\\Bundle\\QrCodeBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeroen van den Enden",
+                    "email": "info@endroid.nl",
+                    "homepage": "http://endroid.nl/"
+                }
+            ],
+            "description": "Endroid Qr Code Bundle for Symfony",
+            "homepage": "https://github.com/endroid/EndroidQrCodeBundle",
+            "keywords": [
+                "bundle",
+                "code",
+                "endroid",
+                "qr",
+                "qrcode",
+                "symfony"
+            ],
+            "time": "2015-01-25 22:42:57"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1791,7 +1906,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "braincrafted/bootstrap-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

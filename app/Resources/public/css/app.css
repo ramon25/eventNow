@@ -1,4 +1,12 @@
 .content-container .create-event-form-container {
   text-align: center; }
 
+.jumbotron {
+  color: white;
+  background-image: url("/images/background.jpg");
+  background-position: 15% 5%;
+  text-align: center;
+  margin-top: -20px;
+  height: 600px; }
+
 /*# sourceMappingURL=app.css.map */

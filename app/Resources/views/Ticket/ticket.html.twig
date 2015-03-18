@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row create-event-form-container">
+        <div class="col-sm-4">&nbsp;</div>
+        <div class="col-xs-12 col-sm-4">
+
+            <h4>Status: {% if ticket.checkedIn %}Checked in{% else %}Checked out{% endif %}</h4>
+            <h4>Ticket owned by: {% if ticket.nameOnTicket %}{{ ticket.nameOnTicket }}{% else %}anonymous{% endif %}</h4>
+            <h4>Generated: {{ ticket.soldTime|date("d.m.Y H:i") }}</h4>
+
+            {% if ticket.checkedIn %}
+                {{ form_start(checkoutForm) }}
+                {{ form_end(checkoutForm) }}
+            {% else %}
+                {{ form_start(checkinForm) }}
+                {{ form_end(checkinForm) }}
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

@@ -12,6 +12,7 @@
     <link href="{{ asset_url }}" type="text/css" rel="stylesheet"/>
     {% endstylesheets %}
 
+    <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ path('_assetic_bootstrap_js') }}"></script>
     {% javascripts '../app/Resources/public/js/*.js' %}
     <script src="{{ asset_url }}"></script>
@@ -41,6 +42,7 @@
     </div>
     <!-- /.navbar-collapse -->
 </nav>
+{% block jumbotron%}{% endblock %}
 <div class="container content-container">
     {% include 'BraincraftedBootstrapBundle::flash.html.twig' %}
     {% block body %}{% endblock %}
@@ -49,6 +51,6 @@
 {% block javascripts %}
 
 {% endblock %}
-<script src="{{ asset('js/jquery.js') }}"></script>
+
 </body>
 </html>
