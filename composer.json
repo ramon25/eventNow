@@ -43,6 +43,9 @@
         "compile": [
           "app/console assetic:dump"
         ],
+        "pre-install-cmd": [
+          "AppBundle\\Composer\\HerokuEnvironment::populateEnvironment"
+        ],
         "post-root-package-install": [
             "SymfonyStandard\\Composer::hookRootPackageInstall"
         ],
