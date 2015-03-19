@@ -27,7 +27,7 @@ class Ticket
     /**
      * @var string
      *
-     * @ORM\Column(name="name_on_ticket", type="string", length=255)
+     * @ORM\Column(name="name_on_ticket", type="string", length=255, nullable=true)
      */
     private $nameOnTicket;
 

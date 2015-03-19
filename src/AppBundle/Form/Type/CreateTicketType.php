@@ -23,7 +23,7 @@ class CreateTicketType extends AbstractType {
                     'placeholder' => 'Ticket holders name (can be empty)',
                 ),
             ))
-            ->add('Create Ticket', 'submit');
+            ->add('createTicket', 'submit');
     }
 
     public function getName()
