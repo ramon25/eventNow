@@ -34,9 +34,9 @@
         "sensio/distribution-bundle": "~3.0,>=3.0.12",
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "twbs/bootstrap": "3.3.*",
+        "twbs/bootstrap": "3.0.*",
         "jquery/jquery":  "1.11.*",
-        "braincrafted/bootstrap-bundle": "dev-master",
+        "braincrafted/bootstrap-bundle": "~2.0",
         "endroid/qrcode-bundle": "~1.5"
     },
     "require-dev": {
