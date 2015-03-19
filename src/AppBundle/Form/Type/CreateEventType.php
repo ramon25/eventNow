@@ -19,13 +19,13 @@ class CreateEventType extends AbstractType {
     {
         $builder
             ->add('name')
-            ->add('date', 'date')
+            ->add('date', 'date', array('attr' => array('class' => 'form-control')))
             ->add('password', 'repeated', array(
                 'first_name'  => 'password',
                 'second_name' => 'confirm',
                 'type'        => 'password',
             ))
-            ->add('Create', 'submit');
+            ->add('create', 'submit');
     }
 
     public function getName()

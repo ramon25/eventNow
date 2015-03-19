@@ -1,3 +1,7 @@
+@import 'bootstrap';
+
+$error-color: #c63c39;
+
 .content-container {
   .create-event-form-container {
     text-align: center;
@@ -11,4 +15,16 @@
   text-align: center;
   margin-top: -20px;
   height: 600px;
+}
+
+.form-row {
+  margin-top: 20px;
+}
+
+.form-field {
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    color: $error-color;
+  }
 }
