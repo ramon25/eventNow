@@ -18,7 +18,7 @@ class HerokuEnvironment
             $url = getenv('HEROKU_POSTGRESQL_IVORY_URL'); //If PostgreSQL is chosen
         }
 
-        $url = getenv('HEROKU_POSTGRESQL_IVORY_URL'); //If PostgreSQL is chosen
+        $url = getenv('DATABASE_URL'); //If PostgreSQL is chosen
 
         if ($url) {
             $url = parse_url($url);
