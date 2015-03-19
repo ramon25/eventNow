@@ -76,4 +76,4 @@ swiftmailer:
     spool:     { type: memory }
 
 braincrafted_bootstrap:
-    less_filter: sass
+    less_filter: none
