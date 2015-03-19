@@ -1,6 +1,5 @@
 imports:
     - { resource: config.yml }
-    - { resource: params.php }
 
 #framework:
 #    validation:
