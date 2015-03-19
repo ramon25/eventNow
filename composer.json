@@ -78,6 +78,7 @@
         "incenteev-parameters": {
           "file": "app/config/parameters.yml",
           "env-map": {
+            "database_driver": "DATABASE_DRIVER",
             "database_host": "DATABASE_HOST",
             "database_port": "DATABASE_PORT",
             "database_name": "DATABASE_NAME",
