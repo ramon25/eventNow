@@ -18,6 +18,8 @@ class HerokuEnvironment
             $url = getenv('HEROKU_POSTGRESQL_IVORY_URL'); //If PostgreSQL is chosen
         }
 
+        $url = getenv('HEROKU_POSTGRESQL_IVORY_URL'); //If PostgreSQL is chosen
+
         if ($url) {
             $url = parse_url($url);
             putenv("SYMFONY__DATABASE_HOST={$url['host']}");
