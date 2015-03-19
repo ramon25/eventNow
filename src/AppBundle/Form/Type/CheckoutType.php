@@ -18,7 +18,7 @@ class CheckoutType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('CheckOut', 'submit', array('label' => 'Check Out', 'button_class' => 'danger', 'attr' => array('class' => 'btn-block btn-lg')));
+            ->add('CheckOut', 'submit');
     }
 
     public function getName()

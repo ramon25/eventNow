@@ -11,9 +11,19 @@
 
             {% if ticket.checkedIn %}
                 {{ form_start(checkoutForm) }}
+                <div class="row form-row">
+                    <div class="col-xs-12">
+                        {{ form_row(checkoutForm.CheckOut, {'attr': {'class':'btn btn-danger btn-lg'}}) }}
+                    </div>
+                </div>
                 {{ form_end(checkoutForm) }}
             {% else %}
                 {{ form_start(checkinForm) }}
+                <div class="row form-row">
+                    <div class="col-xs-12">
+                        {{ form_row(checkinForm.CheckIn, {'attr': {'class':'btn btn-success btn-lg'}}) }}
+                    </div>
+                </div>
                 {{ form_end(checkinForm) }}
             {% endif %}
 

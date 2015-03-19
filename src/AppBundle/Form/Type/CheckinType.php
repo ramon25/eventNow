@@ -19,7 +19,7 @@ class CheckinType extends AbstractType {
     {
         $builder
             //->add('submit', 'submit', array('label' => 'Delete', 'attr'=>array('type'=>'danger')));
-            ->add('CheckIn', 'submit', array('label' => 'Check In', 'button_class' => 'success', 'attr' => array('class' => 'btn-block btn-lg')));
+            ->add('CheckIn', 'submit', array('label' => 'Check In'));
 
     }
 

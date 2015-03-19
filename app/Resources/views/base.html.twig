@@ -42,7 +42,24 @@
     <!-- /.navbar-collapse -->
 </nav>
 {% block jumbotron%}{% endblock %}
+
+
 <div class="container content-container">
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="alert alert-success" role="alert">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('alert') %}
+        <div class="alert alert-warning" role="alert">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger" role="alert">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
     {% block body %}{% endblock %}
 </div>
 
