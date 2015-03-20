@@ -18,8 +18,8 @@ class CreateEventType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('date', 'date', array('years' => range(2015,2017), 'attr' => array('class' => 'form-control')))
+            ->add('name', null, array('attr' => array('placeholder' => 'Name of your event')))
+            ->add('date', 'date', array('years' => range(2015,2017)))
             ->add('password', 'repeated', array(
                 'first_name'  => 'password',
                 'second_name' => 'confirm',
