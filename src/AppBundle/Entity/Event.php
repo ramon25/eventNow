@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Util\SecureRandom;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -201,6 +202,7 @@ class Event
      */
     public function __construct()
     {
+        $this->date = new DateTime();
         $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -236,4 +238,5 @@ class Event
     {
         return $this->tickets;
     }
+
 }

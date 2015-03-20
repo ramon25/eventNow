@@ -19,7 +19,7 @@ class CreateEventType extends AbstractType {
     {
         $builder
             ->add('name')
-            ->add('date', 'date', array('attr' => array('class' => 'form-control')))
+            ->add('date', 'date', array('years' => range(2015,2017), 'attr' => array('class' => 'form-control')))
             ->add('password', 'repeated', array(
                 'first_name'  => 'password',
                 'second_name' => 'confirm',
