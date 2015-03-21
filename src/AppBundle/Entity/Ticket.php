@@ -41,9 +41,9 @@ class Ticket
     /**
      * @var boolean
      *
-     * @ORM\Column(name="paid", type="boolean")
+     * @ORM\Column(name="paid", type="boolean", options={"default" = false})
      */
-    private $paid;
+    private $paid = false;
 
     /**
      * @var string
