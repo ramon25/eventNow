@@ -3,7 +3,7 @@
 {% block body %}
     <div class="row">
         <div class="col-xs-12">
-            <h1>Your Event: {{ event.name }}</h1>
+            <h1>{{ event.name }}</h1>
             <h4>Date: {{ event.date|date("d.m.Y") }}</h4>
             <div class="hidden-xs">
                 <h4>{{ app.request.getSchemeAndHttpHost() }}{{ app.request.requesturi }}</h4>
