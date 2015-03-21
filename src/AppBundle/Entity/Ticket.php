@@ -39,11 +39,25 @@ class Ticket
     private $soldTime;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="paid", type="boolean")
+     */
+    private $paid;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="code", type="string", length=255)
      */
     private $code;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="customer_code", type="string", length=255)
+     */
+    private $customerCode;
 
     /**
      * @var boolean
@@ -148,6 +162,16 @@ class Ticket
     }
 
     /**
+     * @ORM\PrePersist()
+     */
+    public function createCustomerCode()
+    {
+        $generator = new SecureRandom();
+        $random = bin2hex($generator->nextBytes(10));
+        $this->customerCode = $random;
+    }
+
+    /**
      * @ORM\PrePersist
      */
     public function setTimestamp()
@@ -201,5 +225,51 @@ class Ticket
     public function getSoldTime()
     {
         return $this->soldTime;
+    }
+
+    /**
+     * Set paid
+     *
+     * @param boolean $paid
+     * @return Ticket
+     */
+    public function setPaid($paid)
+    {
+        $this->paid = $paid;
+
+        return $this;
+    }
+
+    /**
+     * Get paid
+     *
+     * @return boolean 
+     */
+    public function getPaid()
+    {
+        return $this->paid;
+    }
+
+    /**
+     * Set customerCode
+     *
+     * @param string $customerCode
+     * @return Ticket
+     */
+    public function setCustomerCode($customerCode)
+    {
+        $this->customerCode = $customerCode;
+
+        return $this;
+    }
+
+    /**
+     * Get customerCode
+     *
+     * @return string 
+     */
+    public function getCustomerCode()
+    {
+        return $this->customerCode;
     }
 }

@@ -9,6 +9,7 @@ use AppBundle\Form\Type\CheckoutType;
 use AppBundle\Form\Type\CreateEventType;
 use AppBundle\Form\Type\CreateTicketType;
 use AppBundle\Form\Type\LoginEventType;
+use AppBundle\Form\Type\PayTicketType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,8 +51,20 @@ class TicketController extends Controller
                     'Successfully checked out!'
                 );
             }
+            $paidForm = $this->createForm(new PayTicketType());
+            $paidForm->handleRequest($request);
+            if ($paidForm->isValid()) {
+                $ticket->setPaid(true);
+                $em->persist($ticket);
+                $em->flush();
+                $this->addFlash(
+                    'success',
+                    'Successfully set ticket to paid!'
+                );
+            }
             return $this->render('Ticket/ticket.html.twig', array('ticket' => $ticket,
-                'checkinForm' => $checkinForm->createView(), 'checkoutForm' => $checkoutForm->createView()));
+                'checkinForm' => $checkinForm->createView(), 'checkoutForm' => $checkoutForm->createView(),
+                'paidForm' => $paidForm->createView()));
         } else {
             $this->addFlash(
                 'alert',

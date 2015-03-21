@@ -13,22 +13,17 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CreateTicketType extends AbstractType {
+class PayTicketType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nameOnTicket', 'text', array(
-                'attr' => array(
-                    'placeholder' => 'Ticket holders name (can be empty)',
-                ),
-            ))
-            ->add('paid', 'checkbox')
-            ->add('createTicket', 'submit');
+            ->add('SetPaid', 'submit');
+
     }
 
     public function getName()
     {
-        return 'create_ticket';
+        return 'payticket';
     }
 }

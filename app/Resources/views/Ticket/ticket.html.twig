@@ -7,6 +7,20 @@
 
             <h4>Status: {% if ticket.checkedIn %}Checked in{% else %}Checked out{% endif %}</h4>
             <h4>Ticket owned by: {% if ticket.nameOnTicket %}{{ ticket.nameOnTicket }}{% else %}anonymous{% endif %}</h4>
+            <h4>Paid:
+                {% if ticket.paid %}
+                    <span class="label label-success">Yes</span>
+                {% else %}
+                    <span class="label label-danger">No</span>
+                    {{ form_start(paidForm, {'attr': {'onsubmit': 'return confirm("Is this ticket really paid?");'}}) }}
+                    <div class="row form-row">
+                        <div class="col-xs-12">
+                            {{ form_row(paidForm.SetPaid, {'attr': {'class':'btn btn-success btn-xs'}}) }}
+                        </div>
+                    </div>
+                    {{ form_end(paidForm) }}
+                {% endif %}
+            </h4>
             <h4>Generated: {{ ticket.soldTime|date("d.m.Y H:i") }}</h4>
 
             {% if ticket.checkedIn %}
@@ -18,7 +32,12 @@
                 </div>
                 {{ form_end(checkoutForm) }}
             {% else %}
+                {% if ticket.paid %}
                 {{ form_start(checkinForm) }}
+                    {% else %}
+                        {{ form_start(checkinForm, {'attr': {'onsubmit': 'return confirm("Ticket is not paid. Do you really want to check in?");'}}) }}
+
+                        {% endif %}
                 <div class="row form-row">
                     <div class="col-xs-12">
                         {{ form_row(checkinForm.CheckIn, {'attr': {'class':'btn btn-success btn-lg'}}) }}

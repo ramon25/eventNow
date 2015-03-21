@@ -5,7 +5,10 @@
         <div class="col-xs-12">
             <h1>Your Event: {{ event.name }}</h1>
             <h4>Date: {{ event.date|date("d.m.Y") }}</h4>
-            <h4>{{ app.request.getSchemeAndHttpHost() }}{{ app.request.requesturi }}</h4>
+            <div class="hidden-xs">
+                <h4>{{ app.request.getSchemeAndHttpHost() }}{{ app.request.requesturi }}</h4>
+            </div>
+
         </div>
     </div>
     <div class="row">
@@ -24,6 +27,13 @@
             </div>
 
             <div class="row form-row">
+                <div class="col-xs-12 form-field">
+                    {{ form_widget(ticketForm.paid) }}
+                    {{ form_label(ticketForm.paid) }}
+                </div>
+            </div>
+
+            <div class="row form-row">
                 <div class="col-xs-12">
                     {{ form_row(ticketForm.createTicket, {'attr': {'class':'btn btn-primary'}}) }}
                 </div>
@@ -37,29 +47,39 @@
         <div class="col-xs-12">
 
             {% if tickets %}
-            <h3>Tickets</h3>
+                <h3>Tickets</h3>
             {% endif %}
 
             <div class="panel-group" id="accordion">
                 {% for ticket in tickets %}
-                <div class="panel panel-default" id="panel-{{ ticket.code }}">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-target="#collapse-{{ ticket.code }}"
-                               href="#collapse-{{ ticket.code }}">
-                                {{ ticket.soldtime|date("d.m.Y H:i") }} - {% if ticket.nameonticket %}{{ ticket.nameonticket }}{% else %}anonymous{% endif %}
-                            </a>
-                        </h4>
+                    {% if not ticket.paid %}
+                        {% set ticketClass = 'danger' %}
+                    {% else %}
+                        {% if ticket.checkedIn %}
+                            {% set ticketClass = 'success' %}
+                        {% else %}
+                            {% set ticketClass = 'info' %}
+                        {% endif %}
+                    {% endif %}
+                    <div class="panel panel-{{ ticketClass }}" id="panel-{{ ticket.code }}">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-target="#collapse-{{ ticket.code }}"
+                                   href="#collapse-{{ ticket.code }}">
+                                    {{ ticket.soldtime|date("d.m.Y H:i") }}
+                                    - {% if ticket.nameonticket %}{{ ticket.nameonticket }}{% else %}anonymous{% endif %}
+                                </a>
+                            </h4>
 
-                    </div>
-                    <div id="collapse-{{ ticket.code }}" class="panel-collapse collapse out">
-                        <div class="panel-body">
-                            <a href="{{ app.request.getSchemeAndHttpHost() }}{{ app.request.requesturi }}/ticket/{{ ticket.code }}">
-                            <img src="{{ qrcode_url(app.request.getSchemeAndHttpHost() ~ app.request.requesturi ~ '/ticket/' ~ ticket.code,extension='png') }}" />
-                            </a>
+                        </div>
+                        <div id="collapse-{{ ticket.code }}" class="panel-collapse collapse out">
+                            <div class="panel-body">
+                                <a href="{{ app.request.getSchemeAndHttpHost() }}{{ app.request.requesturi }}/ticket/{{ ticket.code }}">
+                                    <img src="{{ qrcode_url(app.request.getSchemeAndHttpHost() ~ app.request.requesturi ~ '/ticket/' ~ ticket.code,extension='png') }}"/>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
             </div>
         </div>
