@@ -46,6 +46,8 @@
                 {{ form_end(checkinForm) }}
             {% endif %}
 
+            <a href="{{ url('event', {'code': ticket.event.code}) }}" class="btn btn-default btn-lg event-back">Back to event</a>
+
         </div>
     </div>
 {% endblock %}

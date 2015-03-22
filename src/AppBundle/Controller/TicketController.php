@@ -66,11 +66,26 @@ class TicketController extends Controller
                 'checkinForm' => $checkinForm->createView(), 'checkoutForm' => $checkoutForm->createView(),
                 'paidForm' => $paidForm->createView()));
         } else {
-            $this->addFlash(
-                'alert',
-                'You are not allowed to see this tickets data. Please login first!'
-            );
-            return $this->redirectToRoute('event', array('code' => $event->getCode()));
+            $form = $this->createForm(new LoginEventType());
+
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $data = $form->getData();
+                if (hash('sha512', $data['password']) == $event->getPassword()) {
+                    $session->set($code, true);
+
+                    $this->addFlash(
+                        'success',
+                        'Succesfully logged in. Welcome back!'
+                    );
+
+                    return $this->redirectToRoute('ticket', array('code' => $event->getCode(), 'ticket' => $ticket->getCode()));
+                } else {
+                    $this->addFlash('danger', 'Wrong password. Please try again!');
+                }
+            }
+            return $this->render('Event/login.html.twig', array('form' => $form->createView()));
         }
 
     }

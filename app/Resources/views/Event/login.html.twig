@@ -5,7 +5,20 @@
         <div class="col-sm-4">&nbsp;</div>
         <div class="col-xs-12 col-sm-4">
             {{ form_start(form) }}
-
+            <div class="row">
+                <div class="col-xs-12">{{ form_label(form.password) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-field">
+                    {{ form_widget(form.password, {'attr': {'class':'form-control'}}) }}
+                    {{ form_errors(form.password) }}
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-12">
+                    {{ form_row(form.Login, {'attr': {'class':'btn btn-primary btn-block btn-lg'}}) }}
+                </div>
+            </div>
             {{ form_end(form) }}
         </div>
     </div>
