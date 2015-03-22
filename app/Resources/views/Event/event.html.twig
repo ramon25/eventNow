@@ -52,13 +52,13 @@
 
             <div class="panel-group" id="accordion">
                 {% for ticket in tickets %}
-                    {% if not ticket.paid %}
-                        {% set ticketClass = 'danger' %}
+                    {% if ticket.checkedIn %}
+                        {% set ticketClass = 'success' %}
                     {% else %}
-                        {% if ticket.checkedIn %}
-                            {% set ticketClass = 'success' %}
-                        {% else %}
+                        {% if ticket.paid %}
                             {% set ticketClass = 'info' %}
+                        {% else %}
+                            {% set ticketClass = 'danger' %}
                         {% endif %}
                     {% endif %}
                     <div class="panel panel-{{ ticketClass }}" id="panel-{{ ticket.code }}">
