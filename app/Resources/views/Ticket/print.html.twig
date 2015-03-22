@@ -17,7 +17,7 @@
                 <div class="panel-body">
                     <div class="col-xs-12 col-sm-4">
                         <a href="{{ path('ticket', {'ticket': ticket.code, 'code': ticket.event.code}) }}">
-                            <img src="{{ qrcode_url(app.request.getSchemeAndHttpHost() ~ app.request.requesturi ~ '/ticket/' ~ ticket.code,extension='png') }}"/>
+                            <img src="{{ qrcode_url(app.request.getSchemeAndHttpHost() ~ path('ticket', {'ticket': ticket.code, 'code': ticket.event.code}),extension='png') }}"/>
                         </a>
                     </div>
                     <div class="col-xs-12 col-sm-8">
