@@ -87,7 +87,15 @@ class TicketController extends Controller
             }
             return $this->render('Event/login.html.twig', array('form' => $form->createView()));
         }
+    }
 
+    /**
+     * @Route("/event/{code}/ticket/{ticket}/print", name="ticket_print")
+     */
+    public function printAction($code,$ticket) {
+        $ticket = $this->getDoctrine()->getRepository('AppBundle:Ticket')->findOneByCustomerCode($ticket);
+
+        return $this->render('Ticket/print.html.twig', array('ticket' => $ticket));
     }
 }
 

@@ -90,6 +90,7 @@
                                         {% endif %}
                                     </h4>
                                     <h4>Generated: {{ ticket.soldTime|date("d.m.Y H:i") }}</h4>
+                                    <a href="{{ url('ticket_print', {'code': ticket.event.code, 'ticket': ticket.customerCode}) }}" target="_blank" class="btn btn-warning print-ticket">Print ticket</a>
                                 </div>
 
                             </div>
