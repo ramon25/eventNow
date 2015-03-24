@@ -3,6 +3,7 @@
 /app/logs/*
 !app/logs/.gitkeep
 /app/phpunit.xml
+/app/config/parameters.yml
 /bin/
 /composer.phar
 /vendor/
