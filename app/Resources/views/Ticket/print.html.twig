@@ -21,8 +21,9 @@
                         </a>
                     </div>
                     <div class="col-xs-12 col-sm-8">
-                        <h4>Name: {{ ticket.nameonticket }}</h4>
+                        <h4>Name: {% if ticket.nameonticket %}{{ ticket.nameonticket }}{% else %}anonymous{% endif %}</h4>
                         <h4>Issued on: {{ ticket.soldTime|date("d.m.Y H:i") }}</h4>
+                        <p>{{ ticket.event.text }}</p>
                     </div>
                 </div>
             </div>

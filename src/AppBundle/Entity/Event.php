@@ -35,6 +35,13 @@ class Event
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text", nullable=true)
+     */
+    private $text;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="date")
@@ -239,4 +246,27 @@ class Event
         return $this->tickets;
     }
 
+
+    /**
+     * Set text
+     *
+     * @param string $text
+     * @return Event
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * Get text
+     *
+     * @return string 
+     */
+    public function getText()
+    {
+        return $this->text;
+    }
 }

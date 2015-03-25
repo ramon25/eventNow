@@ -6,6 +6,7 @@ use AppBundle\Entity\Event;
 use AppBundle\Entity\Ticket;
 use AppBundle\Form\Type\CreateEventType;
 use AppBundle\Form\Type\CreateTicketType;
+use AppBundle\Form\Type\EditEventType;
 use AppBundle\Form\Type\LoginEventType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -51,20 +52,25 @@ class EventController extends Controller
 
         $session = $request->getSession();
         if ($session->get($code)) {
+            $em = $this->getDoctrine()->getManager();
             $ticket = new Ticket();
+
             $ticketForm = $this->createForm(new CreateTicketType(), $ticket);
-
             $ticketForm->handleRequest($request);
-
             if ($ticketForm->isValid()) {
-
                 $ticket->setEvent($event);
-                $em = $this->getDoctrine()->getManager();
                 $em->persist($ticket);
                 $em->flush();
             }
+
+            $eventForm = $this->createForm(new EditEventType(), $event);
+            $eventForm->handleRequest($request);
+            if ($eventForm->isValid()) {
+                $em->persist($event);
+                $em->flush();
+            }
             $tickets = $this->getDoctrine()->getRepository('AppBundle:Ticket')->findByEvent($event, array('soldTime' => 'DESC'));
-            return $this->render('Event/event.html.twig', array('event' => $event, 'ticketForm' => $ticketForm->createView(), 'tickets' => $tickets));
+            return $this->render('Event/event.html.twig', array('event' => $event, 'ticketForm' => $ticketForm->createView(), 'eventForm' => $eventForm->createView(),'tickets' => $tickets));
         } else {
             $form = $this->createForm(new LoginEventType());
 

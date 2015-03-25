@@ -2,45 +2,75 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-xs-12">
-            <h1>{{ event.name }}</h1>
-            <h4>Date: {{ event.date|date("d.m.Y") }}</h4>
-
-            <div class="hidden-xs">
-                <h4>{{ app.request.getSchemeAndHttpHost() }}{{ app.request.requesturi }}</h4>
+        <div class="col-xs-12 col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ event.name }}</h3>
+                </div>
+                <div class="panel-body">
+                    <h3>Date: {{ event.date|date("d.m.Y") }}</h3>
+                </div>
             </div>
 
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Edit details</div>
+                <div class="panel-body">
+                    {{ form_start(eventForm) }}
+                    <div class="row">
+                        <div class="col-xs-12">{{ form_label(eventForm.text) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 form-field">
+                            {{ form_widget(eventForm.text, {'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-xs-12">
+                            {{ form_row(eventForm.save, {'attr': {'class':'btn btn-default'}}) }}
+                        </div>
+                    </div>
+                    {{ form_end(eventForm) }}
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-4">
-            <h3>Create new Ticket</h3>
-            {{ form_start(ticketForm) }}
 
-            <div class="row">
-                <div class="col-xs-12">{{ form_label(ticketForm.nameOnTicket) }}</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 form-field">
-                    {{ form_widget(ticketForm.nameOnTicket, {'attr': {'class':'form-control'}}) }}
-                    {{ form_errors(ticketForm.nameOnTicket) }}
+            <div class="panel panel-default">
+                <div class="panel-heading">Create new Ticket</div>
+                <div class="panel-body">
+                    {{ form_start(ticketForm) }}
+
+                    <div class="row">
+                        <div class="col-xs-12">{{ form_label(ticketForm.nameOnTicket) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 form-field">
+                            {{ form_widget(ticketForm.nameOnTicket, {'attr': {'class':'form-control'}}) }}
+                            {{ form_errors(ticketForm.nameOnTicket) }}
+                        </div>
+                    </div>
+
+                    <div class="row form-row">
+                        <div class="col-xs-12 form-field">
+                            {{ form_widget(ticketForm.paid) }}
+                            {{ form_label(ticketForm.paid) }}
+                        </div>
+                    </div>
+
+                    <div class="row form-row">
+                        <div class="col-xs-12">
+                            {{ form_row(ticketForm.createTicket, {'attr': {'class':'btn btn-primary'}}) }}
+                        </div>
+                    </div>
+
+                    {{ form_end(ticketForm) }}
                 </div>
-            </div>
 
-            <div class="row form-row">
-                <div class="col-xs-12 form-field">
-                    {{ form_widget(ticketForm.paid) }}
-                    {{ form_label(ticketForm.paid) }}
-                </div>
             </div>
-
-            <div class="row form-row">
-                <div class="col-xs-12">
-                    {{ form_row(ticketForm.createTicket, {'attr': {'class':'btn btn-primary'}}) }}
-                </div>
-            </div>
-
-            {{ form_end(ticketForm) }}
         </div>
     </div>
     <div class="row">
@@ -90,7 +120,8 @@
                                         {% endif %}
                                     </h4>
                                     <h4>Generated: {{ ticket.soldTime|date("d.m.Y H:i") }}</h4>
-                                    <a href="{{ url('ticket_print', {'code': ticket.event.code, 'ticket': ticket.customerCode}) }}" target="_blank" class="btn btn-warning print-ticket">Print ticket</a>
+                                    <a href="{{ url('ticket_print', {'code': ticket.event.code, 'ticket': ticket.customerCode}) }}"
+                                       target="_blank" class="btn btn-warning print-ticket">Print ticket</a>
                                 </div>
 
                             </div>
