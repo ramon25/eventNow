@@ -1,0 +1,13 @@
+<html>
+<body>
+<p><b>Lieber {{ ticket.event.name }} Besucher</b></p>
+
+<p>Vielen Dank für deine Bestellung. Du kannst dein Ticket unter nachfolgendem Link abrufen.<br />Drucke es bitte aus oder bringe es auf deinem
+Smartphone zum Event mit.</p>
+
+<p>Dein persönlicher Ticketlink: <a href="{{ url('ticket_print', {'code': ticket.event.code, 'ticket': ticket.customerCode}) }}"
+                                    target="_blank" class="btn btn-warning print-ticket">Ticket öffnen</a></p>
+
+<p>Vielen Dank, dein {{ ticket.event.name }} Team</p>
+</body>
+</html>

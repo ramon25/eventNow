@@ -69,6 +69,7 @@ class EventController extends Controller
                 $em->persist($event);
                 $em->flush();
             }
+
             $tickets = $this->getDoctrine()->getRepository('AppBundle:Ticket')->findByEvent($event, array('soldTime' => 'DESC'));
             return $this->render('Event/event.html.twig', array('event' => $event, 'ticketForm' => $ticketForm->createView(), 'eventForm' => $eventForm->createView(),'tickets' => $tickets));
         } else {

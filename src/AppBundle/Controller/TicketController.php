@@ -10,6 +10,7 @@ use AppBundle\Form\Type\CreateEventType;
 use AppBundle\Form\Type\CreateTicketType;
 use AppBundle\Form\Type\LoginEventType;
 use AppBundle\Form\Type\PayTicketType;
+use AppBundle\Form\Type\SendTicketType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -96,6 +97,31 @@ class TicketController extends Controller
         $ticket = $this->getDoctrine()->getRepository('AppBundle:Ticket')->findOneByCustomerCode($ticket);
 
         return $this->render('Ticket/print.html.twig', array('ticket' => $ticket));
+    }
+
+    /**
+     * @Route("/event/{code}/ticket/{ticket}/send", name="ticket_send")
+     * @param Request $request
+     * @param $ticket
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function sendAction(Request $request, $ticket) {
+        $ticket = $this->getDoctrine()->getRepository('AppBundle:Ticket')->findOneByCode($ticket);
+
+        $sendForm = $this->createForm(new SendTicketType());
+        $sendForm->handleRequest($request);
+        if ($sendForm->isValid()) {
+            $data = $sendForm->getData();
+            $ticketService = $this->get('ticket_service');
+            $ticketService->sendTicket($ticket, $data['email']);
+
+            $this->addFlash(
+                'success',
+                'Successfully sent ticket by e-mail!'
+            );
+        }
+
+        return $this->render('Ticket/send.html.twig', array('ticket' => $ticket, 'form' => $sendForm->createView()));
     }
 }
 

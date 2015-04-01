@@ -7,3 +7,6 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    ticket_service:
+        class: AppBundle\Service\TicketService
+        arguments: ["@doctrine","@mailer","@service_container"]

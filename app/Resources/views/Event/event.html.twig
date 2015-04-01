@@ -75,7 +75,6 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-
             {% if tickets %}
                 <h3>Tickets</h3>
             {% endif %}
@@ -122,6 +121,8 @@
                                     <h4>Generated: {{ ticket.soldTime|date("d.m.Y H:i") }}</h4>
                                     <a href="{{ url('ticket_print', {'code': ticket.event.code, 'ticket': ticket.customerCode}) }}"
                                        target="_blank" class="btn btn-warning print-ticket">Print ticket</a>
+                                    <a href="{{ url('ticket_send', {'code': ticket.event.code, 'ticket': ticket.code}) }}"
+                                       class="btn btn-success">Send ticket</a>
                                 </div>
 
                             </div>
