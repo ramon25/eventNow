@@ -2,6 +2,10 @@ $navbar-border-radius: 0;
 
 @import 'bootstrap';
 
+a:link:after, a:visited:after {
+    content: normal !important;
+}
+
 $error-color: #c63c39;
 
 .content-container {

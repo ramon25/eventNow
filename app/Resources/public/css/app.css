@@ -5635,6 +5635,9 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+a:link:after, a:visited:after {
+  content: normal !important; }
+
 .content-container .create-event-form-container {
   text-align: center; }
 
