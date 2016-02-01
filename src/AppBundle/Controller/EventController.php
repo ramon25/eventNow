@@ -71,7 +71,7 @@ class EventController extends Controller
             }
 
             $tickets = $this->getDoctrine()->getRepository('AppBundle:Ticket')->findByEvent($event, array('soldTime' => 'DESC'));
-            return $this->render('Event/event.html.twig', array('event' => $event, 'ticketForm' => $ticketForm->createView(), 'eventForm' => $eventForm->createView(),'tickets' => $tickets));
+            return $this->render('Event/event.html.twig', array('event' => $event, 'ticketForm' => $ticketForm->createView(), 'eventForm' => $eventForm->createView(), 'tickets' => $tickets));
         } else {
             $form = $this->createForm(new LoginEventType());
 
