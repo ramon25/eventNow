@@ -6,8 +6,6 @@ use AppBundle\Entity\Event;
 use AppBundle\Entity\Ticket;
 use AppBundle\Form\Type\CheckinType;
 use AppBundle\Form\Type\CheckoutType;
-use AppBundle\Form\Type\CreateEventType;
-use AppBundle\Form\Type\CreateTicketType;
 use AppBundle\Form\Type\LoginEventType;
 use AppBundle\Form\Type\PayTicketType;
 use AppBundle\Form\Type\SendTicketType;
@@ -93,7 +91,7 @@ class TicketController extends Controller
     /**
      * @Route("/event/{code}/ticket/{ticket}/print", name="ticket_print")
      */
-    public function printAction($code,$ticket) {
+    public function printAction($code, $ticket) {
         $ticket = $this->getDoctrine()->getRepository('AppBundle:Ticket')->findOneByCustomerCode($ticket);
 
         return $this->render('Ticket/print.html.twig', array('ticket' => $ticket));
